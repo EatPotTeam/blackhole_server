@@ -48,4 +48,4 @@ module.exports = {
   }
 };
 
-// This line is used for testing GitHub Webhook!
+// This line is used for testing GitHub Webhook
