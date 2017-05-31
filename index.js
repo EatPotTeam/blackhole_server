@@ -9,6 +9,13 @@ app.use(bodyParser.json());
 var ids = [];
 var messages = [];
 
+function getListenPort() {
+    if (process.env.NODE_ENV === 'dev')
+        return 3456;
+    else
+        return 3400;
+}
+
 
 var Message = function (message, time) {
     this.message = message;
@@ -49,6 +56,6 @@ app.get('/pull/:id', function (req, res) {
 });
 
 
-app.listen(8080, function() {
-    console.log('listen at 8080');
+app.listen(getListenPort(), function() {
+    console.log('listen at ' + getListenPort());
 });
