@@ -41,17 +41,17 @@ app.get('/login/:id', function (req, res) {
 });
 
 
-app.post('/submit', function (req, res) {
+app.post('/messages', function (req, res) {
     messages.push(new Message(req.body, Date.now()));
     res.send("message accepted");
 });
 
 
-app.get('/pull/:id', function (req, res) {
+app.get('/messages', function (req, res) {
     data = [];
-    var latestTime = (Date.now() - 60*1000 > ids[req.params.id]) ? Date.now() - 60*1000 : ids[req.params.id];
+    var latestTime = (Date.now() - 60*1000 > ids[req.query.id]) ? Date.now() - 60*1000 : ids[req.query.id];
     for (i = messages.length-1; i >= 0 && messages[i].time >= latestTime; i--) data.push(messages[i]);
-    ids[req.params.id]=Date.now();
+    ids[req.query.id]=Date.now();
     res.send(JSON.stringify(data));
 });
 
