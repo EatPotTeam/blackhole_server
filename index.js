@@ -17,8 +17,9 @@ function getListenPort() {
 }
 
 
-var Message = function (message, time) {
-    this.message = message;
+var Message = function (nickname, content, time) {
+    this.content = content;
+    this.nickname = nickname;
     this.time = time;
 }
 
@@ -42,17 +43,27 @@ app.get('/login/:id', function (req, res) {
 
 
 app.post('/messages', function (req, res) {
-    messages.push(new Message(req.body, Date.now()));
-    res.send("message accepted");
+    var fb = {};
+    fb.content = req.body.content;
+    fb.time = Date.now();
+    messages.push(new Message(req.body.nickname, req.body.content, Date.now()));
+    res.send(JSON.stringify(fb));
 });
 
-
+///messages?userId={id}
 app.get('/messages', function (req, res) {
-    data = [];
-    var latestTime = (Date.now() - 60*1000 > ids[req.query.id]) ? Date.now() - 60*1000 : ids[req.query.id];
-    for (i = messages.length-1; i >= 0 && messages[i].time >= latestTime; i--) data.push(messages[i]);
-    ids[req.query.id]=Date.now();
-    res.send(JSON.stringify(data));
+    data_out = [];
+    var latestTime = (Date.now() - 60*1000 > ids[req.query.userId]) ? Date.now() - 60*1000 : ids[req.query.userId];
+    for (i = messages.length-1; i >= 0 && messages[i].time >= latestTime; i--) {
+        var json_out = {};
+        json_out.nickname = messages[i].nickname;
+        json_out.content = messages[i].content;
+        json_out.createdTime = messages[i].time;
+        console.log(json_out);
+        data_out.push(json_out);
+    }
+    ids[req.query.userId]=Date.now();
+    res.send(JSON.stringify(data_out));
 });
 
 
