@@ -23,6 +23,7 @@ var Message = function (nickname, content, time) {
     this.time = time;
 }
 
+//clear msg slot before 1 min
 function scheduleCronstyle() {
     schedule.scheduleJob('30 * * * * *', function(){
         var newTime = Date.now()-60*1000;
@@ -36,12 +37,13 @@ function scheduleCronstyle() {
 }
 scheduleCronstyle();
 
+//  login/id
 app.get('/login/:id', function (req, res) {
     ids[req.params.id] = Date.now();
     res.send("login success");
 });
 
-
+//  messages #req.body with nickname and content in json format
 app.post('/messages', function (req, res) {
     var fb = {};
     fb.content = req.body.content;
@@ -50,7 +52,7 @@ app.post('/messages', function (req, res) {
     res.send(JSON.stringify(fb));
 });
 
-///messages?userId={id}
+//  messages?userId={id}
 app.get('/messages', function (req, res) {
     data_out = [];
     var latestTime = (Date.now() - 60*1000 > ids[req.query.userId]) ? Date.now() - 60*1000 : ids[req.query.userId];
