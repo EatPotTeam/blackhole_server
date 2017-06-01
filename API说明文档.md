@@ -1,6 +1,5 @@
 # API说明文档
 
-标签：就3个
 
 ---
 
@@ -31,7 +30,7 @@ Post
 ```json
 {
   "content": "Hello, world!",
-  "userId": "123456"
+  "nickname": "123456"
 }
 ```
 
@@ -42,7 +41,7 @@ Post
 ```json
 {
   "content": "Hello, world!",
-  "createdTime": 1495867423793
+  "time": 1495867423793
 }
 ```
 
@@ -59,11 +58,13 @@ Get
 ```json
 [
   {
+    "nickname": "shapys",
     "content": "Hello, world!",
-    "createdTime":1495867423793
+    "time":1495867423793
   }, {
+    "nickname": "shabis"
     "content": "Hello, another world!",
-    "createdTime":1495867423794
+    "time":1495867423794
   }
 ]
 ```
