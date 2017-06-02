@@ -1,0 +1,5 @@
+# node include
+node_modules/
+
+# ide config files
+.idea/
