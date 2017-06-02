@@ -1,6 +1,7 @@
 var app = require('express')();
 var bodyParser = require('body-parser');
 var schedule = require('node-schedule');
+var shortid = require('shortid');
 
 
 app.use(bodyParser.json());
@@ -23,7 +24,7 @@ var Message = function (nickname, content, time) {
     this.time = time;
 };
 
-//clear msg slot before 1 min
+//  clear msg slot before 1 min
 function scheduleCronstyle() {
     schedule.scheduleJob('30 * * * * *', function(){
         var newTime = Date.now()-60*1000;
@@ -36,6 +37,15 @@ function scheduleCronstyle() {
     }); 
 }
 scheduleCronstyle();
+
+//  register
+app.post('/register', function (req, res) {
+    var id = shortid.generate();
+    ids[id] = Date.now();
+    res.send(JSON.stringify({
+        "id": id
+    }))
+});
 
 //  login/id
 app.get('/login/:id', function (req, res) {
