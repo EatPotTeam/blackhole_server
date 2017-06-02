@@ -21,7 +21,7 @@ var Message = function (nickname, content, time) {
     this.content = content;
     this.nickname = nickname;
     this.time = time;
-}
+};
 
 //clear msg slot before 1 min
 function scheduleCronstyle() {
@@ -39,8 +39,13 @@ scheduleCronstyle();
 
 //  login/id
 app.get('/login/:id', function (req, res) {
-    ids[req.params.id] = Date.now();
-    res.send("login success");
+    var respond = {};
+    if (ids[req.params.id] !== undefined) {
+        respond.result = "login success";
+        ids[req.params.id] = Date.now();
+    }
+    else respond.result = "login fail";
+    res.send(JSON.stringify(respond));
 });
 
 //  messages #req.body with nickname and content in json format
@@ -54,7 +59,7 @@ app.post('/messages', function (req, res) {
 
 //  messages?userId={id}
 app.get('/messages', function (req, res) {
-    data_out = [];
+    var data_out = [];
     var latestTime = (Date.now() - 60*1000 > ids[req.query.userId]) ? Date.now() - 60*1000 : ids[req.query.userId];
     for (i = messages.length-1; i >= 0 && messages[i].time >= latestTime; i--) {
         var json_out = {};
