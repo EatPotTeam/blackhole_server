@@ -1,4 +1,4 @@
-var message = require('../model/message');
+var messages = require('../model/message');
 
 module.exports = function(req, res) {
     messages.add(req.body.nickname, req.body.content);

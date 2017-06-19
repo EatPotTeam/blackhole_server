@@ -5,7 +5,7 @@ const getMessage = require('../controller/getMessage.controller');
 
 module.exports = (router) => {
 	router.post('/register', postRegister);
-	router.get('/login:id', getLogin);
-	router.post('/message', postMessage);
-	router.get('/message', getMessage);
+	router.get('/login/:id', getLogin);
+	router.post('/messages', postMessage);
+	router.get('/messages', getMessage);
 }

@@ -17,9 +17,6 @@ exports.get = (time) => {
 }
 
 exports.add = (nickname, message) => {
-    var fb = {};
-    fb.content = message;
-    fb.time = Date.now();
     messages.push(new Message(nickname, message, Date.now()));
 }
 

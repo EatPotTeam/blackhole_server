@@ -2,7 +2,7 @@ var user = require('../model/user');
 
 module.exports = function(req, res) {
 	var respond = {};
-	if (user.exist(req.params.id)) {
+	if (!user.exist(req.params.id)) {
 		respond.result = "login success";
 	} else {
 		respond.result = "login fail";

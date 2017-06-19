@@ -13,3 +13,7 @@ exports.exist = (id) => {
 exports.update = (id) => {
 	ids[id] = Date.now();
 }
+
+exports.get = (id) => {
+    return ids[id];
+}
