@@ -8,7 +8,7 @@ module.exports = {
     // First application
     {
       name      : 'blackhole-ci',
-      script    : './index.js',
+      script    : './app.js',
       env: {
         COMMON_VARIABLE: 'true'
       },
