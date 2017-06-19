@@ -2,12 +2,25 @@ var schedule = require('node-schedule');
 
 messages = []
 
-export.get = (time) => {
-
+exports.get = (time) => {
+    var data_out = [];
+    //var latestTime = (Date.now() - 60*1000 > time) ? Date.now() - 60*1000 : time;
+    for (i = messages.length-1; i >= 0 && messages[i].time >= time; i--) {
+        var json_out = {};
+        json_out.nickname = messages[i].nickname;
+        json_out.content = messages[i].content;
+        json_out.createdTime = messages[i].time;
+        console.log(json_out);
+        data_out.push(json_out);
+    }
+    return data_out;
 }
 
-export.add = (nickname, message) => {
-
+exports.add = (nickname, message) => {
+    var fb = {};
+    fb.content = message;
+    fb.time = Date.now();
+    messages.push(new Message(nickname, message, Date.now()));
 }
 
 var Message = function (nickname, content, time) {

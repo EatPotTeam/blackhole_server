@@ -1,8 +1,15 @@
+ids = [];
 
-export.exist = (id) => {
-
+exports.exist = (id) => {
+    for (var key in ids) {
+        if (key == id) {
+            return true;
+            break;
+        }
+    }
+    return false;
 }
 
-export.update = (id) => {
-	
+exports.update = (id) => {
+	ids[id] = Date.now();
 }

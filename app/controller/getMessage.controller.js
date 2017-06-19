@@ -4,7 +4,7 @@ var message = require('../model/message');
 module.exports = function(req, res) {
 	if (user.exist(req.query.userId)) {
 		var lastActiveTime = user.get(req.query.userId);
-		var time = (Date.now() - 60*1000 > lastActiveTime ? Date.now() - 60*1000 : lastActiveTime;
+		var time = (Date.now() - 60*1000 > lastActiveTime) ? Date.now() - 60*1000 : lastActiveTime;
 		user.update(req.query.userId, Date.now());
 		res.send(JSON.stringify(message.get(time)));
 	}
