@@ -1,12 +1,7 @@
-ids = [];
+var ids = [];
 
 exports.exist = (id) => {
-    for (var key in ids) {
-        if (key == id) {
-            return true;
-            break;
-        }
-    }
+    if (ids[id] !== undefined) return true;
     return false;
 }
 
