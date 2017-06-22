@@ -7,4 +7,4 @@ module.exports = function(req, res) {
 	res.send(JSON.stringify({
         "id": id
     }));
-}
+};

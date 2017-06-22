@@ -11,4 +11,4 @@ module.exports = function(req, res) {
         reply: tmp,
         color: req.body.color
     }));
-}
+};

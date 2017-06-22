@@ -8,4 +8,4 @@ module.exports = (router) => {
 	router.get('/login/:id', getLogin);
 	router.post('/messages', postMessage);
 	router.get('/messages', getMessage);
-}
+};

@@ -1,5 +1,5 @@
-user = require('../model/user');
-message = require('../model/message');
+var user = require('../model/user');
+var message = require('../model/message');
 
 module.exports = function(req, res) {
 	if (user.exist(req.query.userId)) {

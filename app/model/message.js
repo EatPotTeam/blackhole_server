@@ -16,11 +16,11 @@ exports.get = (time) => {
         data_out.push(json_out);
     }
     return data_out;
-}
+};
 
 exports.add = (nickname, message, reply, color) => {
     messages.push(new Message(nickname, message, Date.now(), reply, color));
-}
+};
 
 var Message = function (nickname, content, time, reply, color) {
     this.content = content;
