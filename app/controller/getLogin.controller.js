@@ -7,7 +7,7 @@ module.exports = function(req, res) {
         res.send(JSON.stringify(respond));
 	} else {
 		respond.result = "login fail";
-        res.send(401, JSON.stringify(respond));
+        res.status(401).send(JSON.stringify(respond));
 	}
     // if (ids[req.params.id] !== undefined) {
     //     respond.result = "login success";
