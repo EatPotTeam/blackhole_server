@@ -3,6 +3,7 @@ var user = require('../model/user');
 module.exports = function(req, res) {
 	respond = {};
 	if (user.exist(req.params.id)) {
+		user.update(req.params.id);
 		respond.result = "login success";
         res.send(JSON.stringify(respond));
 	} else {
