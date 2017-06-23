@@ -3,3 +3,6 @@ node_modules/
 
 # ide config files
 .idea/
+
+# coverage report
+coverage/
