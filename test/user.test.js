@@ -2,7 +2,7 @@
  * Created by leo on 17-6-23.
  */
 
-var user = require('../model/user');
+var user = require('../app/model/user');
 var should = require('should');
 
 describe('model/user.js', function () {
