@@ -12,22 +12,24 @@ exports.get = (time) => {
         json_out.createdTime = messages[i].time;
         json_out.reply = messages[i].reply;
         json_out.color = messages[i].color;
+        json_out.sessionId = messages[i].sessionId;
         console.log(json_out);
         data_out.push(json_out);
     }
     return data_out;
 };
 
-exports.add = (nickname, message, reply, color) => {
-    messages.push(new Message(nickname, message, Date.now(), reply, color));
+exports.add = (nickname, message, reply, color, sessionId) => {
+    messages.push(new Message(nickname, message, Date.now(), reply, color, sessionId));
 };
 
-var Message = function (nickname, content, time, reply, color) {
+var Message = function (nickname, content, time, reply, color, sessionId) {
     this.content = content;
     this.nickname = nickname;
     this.time = time;
     this.reply = reply;
     this.color = color;
+    this.sessionId = sessionId;
 };
 
 function scheduleCronstyle() {
