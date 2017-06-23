@@ -13,12 +13,14 @@ describe('model/message.js', function () {
         
         it('should get message when has message', function () {
             pretime = Date.now();
+            setTimeout(function () {}, 2);
             message.add('Daniel Wu', 'I am handsome', 'Lisa S', 'red');
             message.get(pretime).should.not.be.empty;
         });
 
         it('should not get all messages when time is newer than the old message', function () {
             nowtime = Date.now();
+            setTimeout(function () {}, 2);
             message.add('Daniel Wu', 'I hate you', 'Lisa S', 'red');
             message.get(nowtime).should.have.length(1);
         });
@@ -27,6 +29,7 @@ describe('model/message.js', function () {
     describe('message.add', function () {
         it('should get message when add message', function () {
             pretime = Date.now();
+            setTimeout(function () {}, 2);
             message.add('Daniel Wu', 'I am handsome', 'Lisa S', 'red');
             message.get(pretime).should.not.be.empty;
         });

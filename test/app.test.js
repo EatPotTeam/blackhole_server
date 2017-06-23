@@ -99,6 +99,7 @@ describe('app', function () {
 
         it('should return messages after the user login time when user just login', function () {
             request.get('/login/testing').send();
+            setTimeout(function () {}, 2);
             request.get('/messages?userId=testing')
                 .send()
                 .expect(401, function (err, res) {

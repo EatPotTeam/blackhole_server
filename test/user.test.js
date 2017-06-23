@@ -14,9 +14,10 @@ describe('model/user.js', function () {
         });
 
         it('should update time when user update', function () {
-           pretime = user.get('testing');
-           user.update('testing');
-           user.get('testing').should.greaterThan(pretime);
+            pretime = user.get('testing');
+            setTimeout(function () {}, 2);
+            user.update('testing');
+            user.get('testing').should.greaterThan(pretime);
         });
     });
 
