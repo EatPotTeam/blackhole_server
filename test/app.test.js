@@ -55,8 +55,9 @@ describe('app', function () {
                 })
                 .expect(200, function (err, res) {
                     should.not.exist(err);
-                    res.json.should.have.keys('nickname', 'content', 'color', 'reply');
-                    res.json['relpy'].should.equal('');
+                    res.json.should.have.keys('nickname', 'content', 'color', 'reply', 'sessionId');
+                    res.json['reply'].should.equal('');
+                    res.json['sessionId'].should.equal('');
                     done();
                 });
         });
@@ -66,13 +67,15 @@ describe('app', function () {
                 .send({
                     nickname: 'Yihuan Hu',
                     content: 'Eat pot?',
-                    relpy: 'Lao Da Ye',
-                    color: 'red'
+                    reply: 'Lao Da Ye',
+                    color: 'red',
+                    sessionId: 'sfseic'
                 })
                 .expect(200, function (err, res) {
                     should.not.exist(err);
-                    res.json.should.have.keys('nickname', 'content', 'color', 'reply');
-                    res.json['relpy'].should.equal('Lao Da Ye');
+                    res.json.should.have.keys('nickname', 'content', 'color', 'reply', 'sessionId');
+                    res.json['reply'].should.equal('Lao Da Ye');
+                    res.json['sessionId'].should.equal('sfseic');
                     done();
                 });
         })
@@ -85,27 +88,26 @@ describe('app', function () {
                 .expect(401, function (err, res) {
                     should.not.exist(err);
                     res.json.should.equal('user underfined');
-                })
+                });
         });
 
         it('should return messages when user exist', function () {
             request.get('/messages?userId=testing')
                 .send()
-                .expect(401, function (err, res) {
+                .expect(200, function (err, res) {
                     should.not.exist(err);
                     res.json.should.have.length(2);
-                })
+                });
         });
 
         it('should return messages after the user login time when user just login', function () {
             request.get('/login/testing').send();
-            setTimeout(function () {}, 2);
             request.get('/messages?userId=testing')
                 .send()
-                .expect(401, function (err, res) {
+                .expect(200, function (err, res) {
                     should.not.exist(err);
                     res.json.should.be.empty;
-                })
+                });
         });
     });
 });
