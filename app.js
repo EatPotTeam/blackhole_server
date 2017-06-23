@@ -15,3 +15,5 @@ function getListenPort() {
     else
         return 3400;
 }
+
+module.exports = app;
