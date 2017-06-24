@@ -1,0 +1,15 @@
+html
+    head
+        title!= title
+    body
+        div#canvas
+            script(src="https://code.jquery.com/jquery-1.11.2.min.js")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.js")
+            script(src="./js/black-hole.min.js")
+            script.
+                BlackHole.blackHoleifyImage('canvas', './image/milkyway.jpg', {
+                    distanceFromBlackHole: 80,
+                    polynomialDegree: 4,
+                    numAngleTableEntries: 2000,
+                    fovAngleInDegrees: 75
+                });

@@ -8,6 +8,9 @@ require('./app/router/index.router')(app);
 
 app.use(express.static('app/public'));
 
+app.set('views', './app/views');
+app.set('view engine', 'jade');
+
 app.listen(getListenPort(), function() {
     console.log('listen at ' + getListenPort());
 });

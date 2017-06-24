@@ -5,5 +5,5 @@
 var path = require('path');
 
 module.exports = function (req, res) {
-    res.sendFile(path.resolve(__dirname + './../views/index.html'));
+    res.render('index', { title: "Blackhole" });
 };
