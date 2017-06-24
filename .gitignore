@@ -8,4 +8,4 @@ node_modules/
 coverage/
 
 # QR code image
-app/public/image/QR.png
+app/public/upload/QR.png
