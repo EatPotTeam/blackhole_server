@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blackhole</title>
+</head>
+<body>
+    <div id="canvas"></div>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.js"></script>
+    <script src="./js/black-hole.min.js"></script>
+    <script>
+        BlackHole.blackHoleifyImage('canvas', './image/milkyway.jpg', {
+            distanceFromBlackHole: 80, // 80 is default
+            polynomialDegree: 4, // 2 is default
+            numAngleTableEntries: 2000, // 1000 is default. More might improve quality but impact performance
+            fovAngleInDegrees: 80, // 73 is default. Yeah, it's an unusual choice, but it just looked cool, ok?
+        });
+    </script>
+</body>
+</html>
