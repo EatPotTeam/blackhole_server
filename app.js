@@ -16,10 +16,10 @@ app.listen(getListenPort(), function() {
 });
 
 function getListenPort() {
-    if (process.env.NODE_ENV === 'dev')
-        return 3456;
-    else
+    if (process.env.LISTENING_PORT === undefined)
         return 3400;
+    else
+        return process.env.LISTENING_PORT;
 }
 
 module.exports = app;
