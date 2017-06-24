@@ -42,7 +42,21 @@ module.exports = {
       path : '/var/www/blackhole-ci',
       'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.config.js --env dev',
       env  : {
-        NODE_ENV: 'dev'
+        NODE_ENV: 'dev',
+        LISTENING_PORT: 3456
+      }
+    },
+
+    production : {
+      user : 'www-data',
+      host : 'localhost',
+      ref  : 'master',
+      repo : '.',
+      path : '/var/www/blackhole-ci',
+      'post-deploy' : 'npm install && pm2 startOrRestart ecosystem.config.js --env production',
+      env  : {
+        NODE_ENV: 'production',
+        LISTENING_PORT: 3400
       }
     }
   }
