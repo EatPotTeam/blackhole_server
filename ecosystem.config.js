@@ -10,7 +10,8 @@ module.exports = {
       name      : 'blackhole-ci',
       script    : './app.js',
       env: {
-        COMMON_VARIABLE: 'true'
+        COMMON_VARIABLE: 'true',
+        LISTENING_PORT: 3400
       },
       // env_production : {
       //   NODE_ENV: 'production'
